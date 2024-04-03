@@ -99,7 +99,6 @@ server { #remove this
     **NOTE:** to disable a site, unlink the active symlink using:
     `sudo unlink /etc/nginx/sites-enabled/nginx-2420.conf`
 
-
 7. Restart your service\
     `sudo systemctl restart nginx.service`\
     Or use `sudo systemctl start nginx.service` if you haven't started it yet.
