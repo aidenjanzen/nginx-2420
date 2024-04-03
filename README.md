@@ -102,12 +102,11 @@ server { #remove this
 
 7. Restart your service\
     `sudo systemctl restart nginx.service`\
-    or use sudo systemctl start nginx.service` if you haven't started it yet.
+    Or use `sudo systemctl start nginx.service` if you haven't started it yet.
 
-8. Go to your webpage
-    `ip a`
-    and use port `:80`
+8. Go to your webpage.
+    Use `ip a` to get your droplet ip.\
+    Enter your ip into a browser search bar with port `:80`.
 
-systemd components, systemctl commands.
 
 
