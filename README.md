@@ -56,7 +56,7 @@ On your new droplet, (ssh into it)
     `sudo  mkdir /etc/nginx/sites-enabled`\
     This allows you to easily create websites and enable them or disable them.\
     `cd /etc/nginx/sites-available`\
-    This is where you create your server block to listen for your port and run your page.\
+    This is where you create your server block, which is used to listen for your port and run your page.\
     `sudo touch nginx-2420.conf` \
     This creates your server block file.\
     **NOTE:** you can name nginx-2420 to your server name.\
@@ -85,7 +85,7 @@ http {
     include sites-enabled/*;
 }
 ```
-You will also need to remove the default server block.
+You will also need to remove the default server block located in the same nginx.conf file.
 ```nginx
 server { #remove this
     listen       80;
