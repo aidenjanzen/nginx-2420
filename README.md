@@ -104,7 +104,7 @@ server { #remove this
     `sudo systemctl restart nginx.service`\
     Or use `sudo systemctl start nginx.service` if you haven't started it yet.
 
-8. Go to your webpage.
+8. Go to your webpage.\
     Use `ip a` to get your droplet's **PUBLIC** ip.\
     Enter your ip into a browser search bar with port `:80`.
 
