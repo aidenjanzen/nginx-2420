@@ -57,6 +57,7 @@ On your new droplet, (ssh into it)
     This allows you to easily create websites and enable them or disable them.\
     `cd /etc/nginx/sites-available`\
     This is where you create your server block, which is used to listen for your port and run your page.\
+    You need a new server block for each new webpage you want to run.\
     `sudo touch nginx-2420.conf` \
     This creates your server block file.\
     **NOTE:** you can name nginx-2420 to your server name.\
