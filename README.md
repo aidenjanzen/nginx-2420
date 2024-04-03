@@ -1,6 +1,6 @@
 # Installing Nginx and running a webpage.
 On your new droplet, (ssh into it)
-1. Install Vim and Nginx
+1. Install Vim and Nginx.
     First update your system.\
         `sudo pacman -Syu`\
     Then install vim, vim is a text editor used to edit files in your terminal.\
@@ -8,19 +8,17 @@ On your new droplet, (ssh into it)
     Last install nginx, this is what will be running your webpage.\
         `sudo pacman -S nginx`
 
-2. Create a webpage directory\
+2. Create a web page directory.\
     Use `cd` to go into your home directory\
     Run the command `sudo mkdir -p /web/html/nginx-2420`\
-    This will create the folder `nginx-2420` in your root directory\
+    This will create the folder `nginx-2420` in your root directory.\
     `-p` creates the parent folders\
-    and\
-    `cd /web/html/nginx-2420`
-    This is where your website html will go.
+    Use `cd /web/html/nginx-2420` to enter the folder for your html.
 
-3. Adding html
-    Usee sftp or `sudo touch index.html` to create your own html template.
-    use `sudo vim index.html` to access the file
-    An example is shown below:
+3. Add HTML.\
+    Use sftp or `sudo touch index.html` to create your own html template.\
+    Use `sudo vim index.html` to access the file\
+    An example html page is shown below:
 ```html
 <!DOCTYPE html>
     <html lang="en">
@@ -52,13 +50,18 @@ On your new droplet, (ssh into it)
     </html>
 ```
 
-5. To enable your html you need to create two folders:
-`sudo  mkdir /etc/nginx/sites-available`
-`sudo  mkdir /etc/nginx/sites-enabled`
-`cd /etc/nginx/sites-available`
-this is where to create your server block to listen for your port and run your server
-`sudo touch nginx-2420.conf` NOTE: you can name nginx-2420 to your server name
-1sudo vim nginx-2420.conf`
+4. Enable HTML\
+    To enable your html you need to create two folders:\
+    `sudo  mkdir /etc/nginx/sites-available`\
+    `sudo  mkdir /etc/nginx/sites-enabled`\
+    This allows you to easily create websites and enable them or disable them.\
+    `cd /etc/nginx/sites-available`\
+    This is where you create your server block to listen for your port and run your page.\
+    `sudo touch nginx-2420.conf` \
+    This creates your server block file.\
+    **NOTE:** you can name nginx-2420 to your server name.\
+    To enter the file: `sudo vim nginx-2420.conf`\
+    An example server block is shown below:
 
 ```nginx
 server {
@@ -72,34 +75,36 @@ server {
 }
 ```
 
-6. `sudo vim /etc/nginx/nginx.conf`
-at the end of your 
-
+5. Enable the server block \
+    You need allow nginx to see your server block:\
+    Use `sudo vim /etc/nginx/nginx.conf`\
+    Include `include sites-enabled/*;` at the end of your http block in the nginx.conf file.
+```nginx
 http {
     ...
     include sites-enabled/*;
 }
-you will also need to remove the default server block
 ```
-server {
+You will also need to remove the default server block.
+```nginx
+server { #remove this
     listen       80;
     server_name  localhost;
     ...
 }
 ```
-To enable a site, simply create a symlink:
-
-sudo ln -s /etc/nginx/sites-available/nginx-2420.conf /etc/nginx/sites-enabled/nginx-2420.conf
-
-To disable a site, unlink the active symlink:
-
-sudo unlink /etc/nginx/sites-enabled/nginx-2420.conf
+6. Enable your site.\
+    Using the name of your conf file run this command to create a symlink.
+    `sudo ln -s /etc/nginx/sites-available/nginx-2420.conf /etc/nginx/sites-enabled/nginx-2420.conf`\
+    **NOTE:** to disable a site, unlink the active symlink using:
+    `sudo unlink /etc/nginx/sites-enabled/nginx-2420.conf`
 
 
-4. Restart your service\
-    `sudo systemctl restart nginx.service`
+7. Restart your service\
+    `sudo systemctl restart nginx.service`\
+    or use sudo systemctl start nginx.service` if you haven't started it yet.
 
-4. Go to your webpage
+8. Go to your webpage
     `ip a`
     and use port `:80`
 
