@@ -41,7 +41,7 @@ In this file make the new service file to run the hello-server backend
 Description=Http Hello-Server script
 
 [Service]
-Type=oneshot
+Type=simple
 ExecStart=/etc/nginx/sites-backend/hello-server 
 
 [Install]
