@@ -37,15 +37,15 @@ and \
 In this file make the new service file to run the hello-server backend
 
 ```plaintext
-    [Unit]
-    Description=Http Hello-Server script
+[Unit]
+Description=Http Hello-Server script
 
-    [Service]
-    Type=oneshot
-    ExecStart=/etc/nginx/sites-backend/hello-server 
+[Service]
+Type=oneshot
+ExecStart=/etc/nginx/sites-backend/hello-server 
 
-    [Install]
-    WantedBy=multi-user.target
+[Install]
+WantedBy=multi-user.target
 ```
 Make sure to reload the services\
 `sudo systemctl daemon-reload`\
@@ -53,6 +53,11 @@ To start the backend do:\
 `sudo systemctl start backend.service`
 
 ## Adding the reverse proxy
+In your nginx config in `/etc/nginx/sites-available`\
+Using: \
+`sudo vim nginx-2420.conf`
+Add two location blocks as shown below to your server block
+``` nginx
 server {
     listen 80;
     listen [::]:80;
@@ -82,6 +87,11 @@ location /echo {
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
+```
+Save it and reload nginx using:\
+`sudo systemctl restart nginx`
 
+Go to your server on its main ip 64.23.154.72/hey or /echo using postman
 
-sudo systemctl restart nginx
+![Screenshot1]()
+![Screenshot2]()
