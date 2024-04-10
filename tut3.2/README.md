@@ -93,5 +93,5 @@ Save it and reload nginx using:\
 
 Go to your server on its main ip 64.23.154.72/hey or /echo using postman
 
-![Screenshot1]()
-![Screenshot2]()
+![Screenshot1](https://github.com/aidenjanzen/nginx-2420/blob/main/tut3.2/Screenshot1.png)
+![Screenshot2](https://github.com/aidenjanzen/nginx-2420/blob/main/tut3.2/Screenshot2.png)
