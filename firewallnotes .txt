@@ -1,0 +1,8 @@
+UFW uncomplicated firewall runs on netfilter (packet checking) and controls the firewall. 
+
+bastion host is a small Linux server just for your SSH 
+reverse proxxy is a redirect to another server whether on your server or someone else
+
+advantages for reverse proxy: security, load balancing, caching, obfuscating - not allowing users to connect to the origin server or know about it
+proxy pass director is the redirect when they go to an endpoint they get redirected to somewhere else (in your nginx)
+
