@@ -21,12 +21,20 @@ To check the status of the firewall:\
 
 ## Configuring the backend:
 Using sftp get the downloaded `hello-server` file on your droplet\
-Make the binary file executable with:\ 
-`chmod +x hello-server`
-sudo mv hello-server /etc/nginx/sites-backend 
+Make the binary file executable with: \
+`chmod +x hello-server`\
+If you file is not already there create a new folder in your nginx folder\
+This is where we have our sites-enabled folders\
+`sudo mkdir sites-backend`\
+and move it there with\
+`sudo mv hello-server /etc/nginx/sites-backend `
 
-/etc/systemd/system
-sudo touch backend.service 
+In your `/etc/systemd/system` folder do \
+`sudo touch backend.service `
+and \
+`sudo vim backend.service`
+
+In this file make the new service file to run the hello-server backend
 
 ```plaintext
     [Unit]
@@ -39,22 +47,12 @@ sudo touch backend.service
     [Install]
     WantedBy=multi-user.target
 ```
-sudo systemctl daemon-reload
-sudo systemctl start backend.service
+Make sure to reload the services\
+`sudo systemctl daemon-reload`\
+To start the backend do:\
+`sudo systemctl start backend.service`
 
-
-location /api {
-        # Define the reverse proxy settings
-        proxy_pass http://127.0.0.1:8080;
-        proxy_http_version 1.1;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-
-
-
+## Adding the reverse proxy
 server {
     listen 80;
     listen [::]:80;
