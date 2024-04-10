@@ -6,7 +6,7 @@ To install ufw use:\
 To start the service:\
 `sudo systemctl enable --now ufw.service`\
 WARNING DO NOT ENABLE FIREWALL IF USING SSH:
-`sudo ufw enable`\
+`sudo ufw enable`
 
 To allow SSH through firewall:\
 `sudo ufw allow ssh`\
@@ -17,7 +17,7 @@ To allow HTTP:\
 To enable the firewall:\
 `sudo ufw enable`\
 To check the status of the firewall:\
-`sudo ufw status verbose`\
+`sudo ufw status verbose`
 
 ## Configuring the backend:
 Using sftp get the downloaded `hello-server` file on your droplet\
@@ -30,7 +30,7 @@ and move it there with\
 `sudo mv hello-server /etc/nginx/sites-backend `
 
 In your `/etc/systemd/system` folder do \
-`sudo touch backend.service `
+`sudo touch backend.service`
 and \
 `sudo vim backend.service`
 
